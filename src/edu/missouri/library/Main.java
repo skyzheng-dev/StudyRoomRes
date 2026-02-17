@@ -30,5 +30,8 @@ public class Main {
         System.out.println("After cancel: " + res2);
         
         System.out.println("\n=== Test Complete ===");
+        
+        
+        System.out.println("Hello\n");
     }
 }
