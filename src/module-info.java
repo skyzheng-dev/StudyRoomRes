@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module Sky_StudyRoomRes {
-}
