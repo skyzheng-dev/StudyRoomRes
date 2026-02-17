@@ -32,6 +32,6 @@ public class Main {
         System.out.println("\n=== Test Complete ===");
         
         
-        System.out.println("Hello\n");
+        System.out.println("Hello New\n");
     }
 }

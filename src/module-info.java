@@ -4,5 +4,5 @@
 /**
  * 
  */
-module StudyRoomRes {
+module Sky_StudyRoomRes {
 }
