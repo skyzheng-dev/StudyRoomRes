@@ -52,9 +52,25 @@ public class ReservationBook{
 	}
 	
 	
-	public String printForRoom(Room room) {
+	public void printForRoom(Room room) {
+		if (room == null) {
+            System.out.println("Cannot search for null room.");
+        }
 		
-		return null;
+		boolean status = false;
+		
+		System.out.println("Reservations for " + room + ":");
+		for (int i = 0; i<count; i++) {
+			if (reservations[i].getRoom() == room) {
+				status = true;
+				System.out.println(reservations[i]);
+			}
+		}
+		
+		if (!status) {
+			throw new IllegalArgumentException("There is not reservation for this room.");
+		}
+		
 	}
 	
 	
