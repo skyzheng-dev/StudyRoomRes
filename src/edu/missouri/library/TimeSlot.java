@@ -59,11 +59,10 @@ public class TimeSlot {
 
     // STILL Needs this:  toString() such as 13:00-14:00combine it with ternary operator to add AM and PM for the time
     public String toString() {
-        String startTime =  this.hour >= 12 ? "pm": "am";
-        String endTime =  (this.hour+1) >= 12 ? "pm": "am";
+        
     	
         
-        return this.hour + startTime + "--" + (this.hour+1) + endTime;
+        return this.hour+":00" + "--" + (this.hour+1)+":00";
 
     }
 
