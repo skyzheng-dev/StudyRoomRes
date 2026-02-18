@@ -7,7 +7,7 @@ package edu.missouri.library;
 public class Reservation{
 	
 	
-	
+	//initialize variables
 	private int id;
 	private Room room;
 	private String studentName;
@@ -16,8 +16,9 @@ public class Reservation{
 	private boolean canceled;
 	private boolean checkedIn;
 	
+	// constructor
 	public Reservation(int id, Room room, String studentName, TimeSlot timeslot, boolean canceled, boolean checkedIn) {
-		
+		// error checking
 		if (id <=0) {
 			throw new IllegalArgumentException("id must be > 0");
 		}
@@ -39,6 +40,7 @@ public class Reservation{
 		this.checkedIn = checkedIn;
 	}
 	
+	//getter functions
 	public int getId() {
 		return id;
 	}
@@ -55,6 +57,7 @@ public class Reservation{
 	    return timeSlot;
 	}
 	   
+	//checking functions
 	public boolean isCanceled() {
 	    return canceled;
 	}
@@ -65,8 +68,9 @@ public class Reservation{
 
 	
 	
-	
+	// cancel reservation
 	public boolean cancel() {
+		// error checking
 		if (checkedIn) {
 	        throw new IllegalStateException("Cannot cancel a reservation that has been checked in");
 	    }
@@ -74,7 +78,9 @@ public class Reservation{
 		return this.canceled;
 	}
 	
+	// check in to a reservation
 	public boolean checkIn() {
+		// error checking
 		if (canceled) {
 	        throw new IllegalStateException("Cannot check in a canceled reservation");
 	    }
@@ -83,7 +89,7 @@ public class Reservation{
 	}
 	
 	
-	
+	//synonymous to the canCheckIn function where it checks if the reservation is currently ongoing
 	public boolean isActive() {
         return !canceled && !checkedIn;
     }
@@ -94,7 +100,7 @@ public class Reservation{
     }
 	
 	
-	
+	//print the reservation details
 	public String toString() {
 		String status;
         if (canceled) {

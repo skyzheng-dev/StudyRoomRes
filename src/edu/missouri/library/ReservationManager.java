@@ -1,29 +1,17 @@
 package edu.missouri.library;
 
-/*
- * Required behavior:
-• Stores a ReservationBook Make exception store and own all other classes as well.
-• Generates reservation IDs (you can use a private counter field)
-• Provides high level operations such as:
-– createReservation(Room room, String studentName, TimeSlot slot)
-– cancelReservation(int id)
-– checkInReservation(int id)
-Design requirements:
-• Avoid reaching through objects to manipulate internals
-• Avoid long chains like a.getB().getC().doSomething()
-• Delegate behavior to the class that owns the relevant data
- */
 
 
 public class ReservationManager {
 
-
+	// initialize variables
     private ReservationBook book;
     private int ID;
 
     
-    
+    // constructor
     public ReservationManager(int bookCapacity) {
+    	// error checking
         if (bookCapacity <= 0) {
             throw new IllegalArgumentException("Capacity must be positive");
         }
@@ -46,6 +34,7 @@ public class ReservationManager {
     
     public void cancelReservation(int id) {
         Reservation reservation = book.findById(id);
+     // error checking
         if (reservation == null) {
         	
             throw new IllegalArgumentException("Reservation not found.");
@@ -58,17 +47,19 @@ public class ReservationManager {
     public void checkInReservation(int id) {
     	
         Reservation reservation = book.findById(id);
-        
+        // error checking
         if (reservation == null) {
             throw new IllegalArgumentException("Reservation not found.");
         }
         reservation.checkIn();
     }
-
+    
+    // print all reservations
     public void printAll() {
         book.printAll();
     }
-
+    
+    //print all reservations for specified room
     public void printForRoom(Room room) {
         book.printForRoom(room);
     }

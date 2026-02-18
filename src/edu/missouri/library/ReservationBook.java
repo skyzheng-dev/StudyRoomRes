@@ -4,11 +4,13 @@ package edu.missouri.library;
 
 public class ReservationBook{
 	
+	// initialize reservation array and count index
 	private Reservation[] reservations;
 	private int count;
 	
-	
+	// constructor
 	public ReservationBook(int capacity) {
+		// error checking
 		if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity must be positive");
         }
@@ -16,11 +18,14 @@ public class ReservationBook{
         this.count = 0;
 	}
 	
+	//add reservation
 	public void add(Reservation r) {
+		// error checking
 		if (r == null) {
             throw new IllegalArgumentException("Cannot add null reservation");
         }
 		
+		// error checking
 		if (count >= reservations.length) {
             throw new IllegalArgumentException("Reservation book is full");
         }
@@ -29,7 +34,8 @@ public class ReservationBook{
         count++;
 		
 	}
-			
+	
+	//find reservation by id
 	public Reservation findById(int id) {
 		for (int i=0; i<count; i++) {
 			if (reservations[i].getId() == id) {
@@ -40,6 +46,7 @@ public class ReservationBook{
 		return null; 
 	}
 	
+	//print out all reservations
 	public void printAll() {
 		if (count == 0) {
             System.out.println("No reservations found.");
@@ -51,7 +58,7 @@ public class ReservationBook{
 		}
 	}
 	
-	
+	//print reservations for specified room #
 	public void printForRoom(Room room) {
 		if (room == null) {
             System.out.println("Cannot search for null room.");
@@ -67,6 +74,7 @@ public class ReservationBook{
 			}
 		}
 		
+		// error checking
 		if (!status) {
 			throw new IllegalArgumentException("There is not reservation for this room.");
 		}
