@@ -32,7 +32,7 @@ public class Main {
         System.out.println("\n=== Test Complete ===");
 
         // Test ReservationBook
-        System.out.println("\n=== Testing ReservationBook ===\n");
+        System.out.println("\n=== Testing ReservationBook classes ===\n");
         
         ReservationBook book = new ReservationBook(5);
         book.add(res1);
@@ -49,5 +49,69 @@ public class Main {
         
         System.out.println();
         book.printForRoom(room101);
+        
+        
+        // Create ReservationManager with capacity 10
+        ReservationManager manager = new ReservationManager(10);
+
+       
+
+        // Create TimeSlots
+        TimeSlot slot9 = new TimeSlot(9);
+        TimeSlot slot10 = new TimeSlot(10);
+        TimeSlot slot13 = new TimeSlot(13);
+        TimeSlot slot14 = new TimeSlot(14);
+
+        // Create Reservations (at least 5)
+        Reservation r1 = manager.createReservation(room101, "Alice", slot9);
+        Reservation r2 = manager.createReservation(room101, "Bob", slot10);
+       
+        Reservation r5 = manager.createReservation(room101, "Emma", slot14);
+
+        // Cancel at least one
+        manager.cancelReservation(r2.getId());
+
+        // Check in at least one
+        manager.checkInReservation(r1.getId());
+
+        // Print all reservations
+        System.out.println("----- ALL RESERVATIONS -----");
+        manager.printAll();
+
+        // Print reservations for specific room
+        System.out.println("\n----- RESERVATIONS FOR ROOM 101 -----");
+        manager.printForRoom(room101);
+
+
+        // --------------------------------------
+        //  Edge Case Tests
+        // --------------------------------------
+
+        System.out.println("\n----- EDGE CASE TESTS -----");
+
+        // Try canceling an already canceled reservation
+        try {
+            manager.cancelReservation(r2.getId());
+        } catch (IllegalStateException e) {
+            System.out.println("Passed double cancel test: " + e.getMessage());
+        }
+
+        // Try checking in a canceled reservation
+        try {
+            manager.checkInReservation(r2.getId());
+        } catch (IllegalStateException e) {
+            System.out.println("Passed check-in after cancel test: " + e.getMessage());
+        }
+
+        // Try invalid ID
+        try {
+            manager.cancelReservation(999);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Passed invalid ID test: " + e.getMessage());
+        }
+    
+        
+        
+        
     }
 }
