@@ -59,14 +59,14 @@ public class Main {
         // Create TimeSlots
         TimeSlot slot9 = new TimeSlot(9);
         TimeSlot slot10 = new TimeSlot(10);
-        TimeSlot slot13 = new TimeSlot(13);
-        TimeSlot slot14 = new TimeSlot(14);
+//        TimeSlot slot13 = new TimeSlot(13);
+//        TimeSlot slot14 = new TimeSlot(14);
 
         // Create Reservations (at least 5)
         Reservation r1 = manager.createReservation(room101, "Alice", slot9);
         Reservation r2 = manager.createReservation(room101, "Bob", slot10);
        
-        Reservation r5 = manager.createReservation(room101, "Emma", slot14);
+//        Reservation r5 = manager.createReservation(room101, "Emma", slot14);
 
         // Cancel at least one
         manager.cancelReservation(r2.getId());

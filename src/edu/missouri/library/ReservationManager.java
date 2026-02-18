@@ -19,7 +19,7 @@ public class ReservationManager {
 
 
     private ReservationBook book;
-    private int nextId;
+    private int ID;
 
     
     
@@ -29,16 +29,15 @@ public class ReservationManager {
         }
 
         book = new ReservationBook(bookCapacity);
-        nextId = 1;
+        ID = 1;
     }
 
     
    // createReservation(Room room, String studentName, TimeSlot slot)
    
     public Reservation createReservation(Room room, String studentName, TimeSlot slot) {
-        Reservation reservation =
-            new Reservation(nextId, room, studentName, slot, false, false);
-        nextId++;
+        Reservation reservation = new Reservation(ID, room, studentName, slot, false, false);
+        ID++;
         book.add(reservation);
         return reservation;
     }
@@ -48,6 +47,7 @@ public class ReservationManager {
     public void cancelReservation(int id) {
         Reservation reservation = book.findById(id);
         if (reservation == null) {
+        	
             throw new IllegalArgumentException("Reservation not found.");
         }
         reservation.cancel();
@@ -56,7 +56,9 @@ public class ReservationManager {
     // checkInReservation(int id)
 
     public void checkInReservation(int id) {
+    	
         Reservation reservation = book.findById(id);
+        
         if (reservation == null) {
             throw new IllegalArgumentException("Reservation not found.");
         }
